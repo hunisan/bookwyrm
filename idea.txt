@@ -1,0 +1,64 @@
+Bookwyrm
+
+This application is used for keeping track of books.
+First the user can add a book that he or she wants to read.
+Later the state of this book can be modified multiple times:
+when the user buys/acquires the book
+when the user starts reading
+when the user finishes reading 
+optionally the user can track the current page where they are on while reading
+
+
+
+Book:
+title: (string) the title of the book 
+genre: (string) genre of the book, e.g: mystery, sci-fi, romance etc.
+page count: (integer) number of pages
+description (string) short synopsis of the story or other description
+state: (string) can have the following values:
+- want to have
+- want to read
+- started progress
+- completed reading
+current page number: (integer) optional field, can be used to track reading progress
+
+
+
+Operations:
+
+Create book:
+Enter the title of the book
+Select genre from drop-down menu
+Page count and description can optionally be set, but the user might not know them yet
+State is automatically set to "want to have"
+
+Update book:
+All fields can be edited 
+State can be changed by selecting from drop-down menu, but can only be moved forwards:
+want to have -> want to read -> started progress -> completed reading
+current page number can be changed but if it is set to higher than the page count, an error is displayed
+
+Read book:
+A list of the names of all books is shown in a menu
+This list can be filtered by genre & state
+By tapping on one of the books the rest of the details can be seen
+
+Delete book:
+The book is deleted from the list with all its data
+
+
+
+The application uses a server for storing the data entered by the user,
+while a copy of the data is stored locally on the device, and when changing the data, the changes are synced to the server
+
+In case when there is no internet connection when using the app:
+Read: 
+The data can be read from local storage, there is a warning label that the connection to the server is not available
+Create:
+Not allowed, an error message is shown that there is no connection
+Update:
+Not allowed, an error message is shown that there is no connection
+Delete:
+Not allowed, an error message is shown that there is no connection
+
+
